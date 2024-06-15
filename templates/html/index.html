@@ -4,9 +4,19 @@
     <title>Hello from Lambda!</title>
   </head>
   <body>
-    <h1>Hello {{ name }}!</h1>
-    <p>This page was rendered from a Lambda function.</p>
-    <p><a href="/login">Login</a></p>
+    {% if name != '' %}
+    <h1 id="header">Hello {{ name }}!</h1>
+    {% else %}
+    <h1 id="header">Hello Guest!</h1>
+    {% endif %}
+    <h2>Welcome to the Simple Todo App!</h2>
+    <p>Select a function below!</p>
+    {% if is_login %}
+    <p><a href="#header">Add Task</a></p>
+    <p><a href="#header">Check Tasks</a></p>
+    {% else %}
+    <p><a href="#header">Login</a></p>
+    {% endif %}
   </body>
 </html>
 
