@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tasks - Simple Todo App</title>
+  </head>
+  <body>
+    <h1>Here's your Tasks!</h1>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Memo</th>
+                <th scope="col">Deadline</th>
+        </thead>
+        {% if len(tasks) == 0 %}
+            <p>All your tasks seem done! Have a nice day!</p>
+        {% else %}
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.memo }}</td>
+                    <td>{{ task.deadline }}</td>
+                    <td><a href={{ "update/?task_id=WILDCARD" | replace("WILDCARD" , task.id) }}>編集</a></td>
+                    <td><a href={{ "delete/?task_id=WILDCARD" | replace("WILDCARD" , task.id) }}>削除</a></td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+  </body>
+</html>
+
